@@ -1,6 +1,6 @@
 Package: headliner
 Title: Compose Sentences to Describe Comparisons
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(
       given = "Jake",
@@ -23,8 +23,8 @@ Depends: R (>= 4.1)
 VignetteBuilder: knitr
 URL: https://github.com/rjake/headliner
 NeedsCompilation: no
-Packaged: 2022-06-01 20:10:46 UTC; foxtr
+Packaged: 2022-06-26 23:26:41 UTC; foxtr
 Author: Jake Riley [aut, cre]
 Maintainer: Jake Riley <rjake@sas.upenn.edu>
 Repository: CRAN
-Date/Publication: 2022-06-02 10:00:02 UTC
+Date/Publication: 2022-06-26 23:40:02 UTC

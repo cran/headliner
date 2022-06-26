@@ -10,7 +10,7 @@ headline(
   y,
   headline = "{trend} of {delta} ({orig_values})",
   ...,
-  if_match = "There was {trend}",
+  if_match = "There was no difference",
   trend_phrases = headliner::trend_terms(),
   plural_phrases = NULL,
   orig_values = "{x} vs. {y}",
@@ -49,8 +49,8 @@ headline_list(
 \item{if_match}{string to display if numbers match, uses
 \code{\link[glue]{glue}} syntax}
 
-\item{trend_phrases}{list of values to use for when y is more than x, y is the
-same as x, or y is less than x. You can pass it just
+\item{trend_phrases}{list of values to use for when x is more than y
+or x is less than y. You can pass it just
 \code{\link{trend_terms}} (the default) and call the result with
 \code{"...{trend}..."} or pass is a named list (see examples)}
 
@@ -92,10 +92,10 @@ Objects can be combined into a headline using the following search path:
 If given
 
 \if{html}{\out{<div class="sourceCode r">}}\preformatted{delta <- 123
-headline(1, 3, delta = "xxxxxx")
+headline(1, 3, delta = "abc")
 }\if{html}{\out{</div>}}
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{## decrease of xxxxxx (1 vs. 3)
+\if{html}{\out{<div class="sourceCode">}}\preformatted{## decrease of abc (1 vs. 3)
 }\if{html}{\out{</div>}}
 
 \code{delta} is one of the "talking points" from \code{compare_values()} and would
