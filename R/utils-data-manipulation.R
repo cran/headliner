@@ -32,8 +32,9 @@ check_overlapping_names <- function(orig_df, new_df, drop = FALSE) {
 #'
 #' @param name prefix for
 #' @param cond the x or y condition used in compare_conditions()
-#' @importFrom dplyr filter summarise across
 #' @inheritParams dplyr across
+#' @importFrom rlang enquo quo_is_missing
+#' @importFrom dplyr filter summarise across
 #' @noRd
 #' @examples
 #' aggregate_group(mtcars, name = "_x", .cols = mpg, .fns = lst(mean, sd))
@@ -41,8 +42,13 @@ aggregate_group <- function(df, name, .cols, .fns, cond) {
   # df <- mtcars; name = "_x";  .cols <- as.symbol("mpg"); .fns = mean
   # cond <- dplyr::quo(cyl > 4);
 
+  cond <- enquo(cond)
+
+  if (!quo_is_missing(cond)) {
+    df <- filter(df, {{cond}})
+  }
+
   df |>
-    filter({{cond}}) |>
     summarise(
       across({{.cols}}, .fns, .names = "{.fn}_{.col}{name}")
     )
